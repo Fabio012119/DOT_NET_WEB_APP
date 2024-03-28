@@ -1,0 +1,43 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>View</title>
+</head>
+<body>
+    <h2> @TempData["Message"] </h2>
+    <p> There are @TempData["CustomerCount"] customers added to the list </p>
+    <table>
+        <thead>
+            <tr>
+                <th>Customer Id</th>
+                <th>Customer Name</th>
+                <th>Customer Amount</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in @TempData["CustomerList"] as List<Customer>)
+            {
+                <tr>
+                    <td>@item.CustomerId</td>
+                    <td>@item.CustomerName</td>
+                    <td>@item.Amount</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    @{
+        TempData.Keep("Message");
+    }
+    <a asp-controller="Demo" asp-action="Method2">
+        Go to method2
+    </a>
+</body>
+</html>
+
+
